@@ -1,0 +1,10 @@
+{
+  "name": "LangDetect",
+  "label": "Language Detection",
+  "description": "Provides actions for Language detection",
+  "group": "",
+  "artifactName": "",
+  "packageVersion": "",
+  "codeVersion": "",
+  "commands": []
+}
