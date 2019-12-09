@@ -4,25 +4,89 @@
     "description": "Provides actions for Language detection",
     "group": "com.automationanywhere",
     "artifactName": "LangDetect",
-    "packageVersion": "1.0.0-20191208-162538",
-    "codeVersion": "1.0.0-20191208-162538",
+    "packageVersion": "1.0.0-20191209-113837",
+    "codeVersion": "1.0.0-20191209-113837",
     "commands": [
         {
-            "name": "detectlang",
-            "label": "Detect Languages",
-            "description": "Detect the languages in a text",
+            "name": "detectlangfile",
+            "label": "Detect Languages File",
+            "description": "Detect the languages in a file",
             "nodeLabel": "Detect Languages",
-            "mainClass": "com.automationanywhere.botcommand.demo.LangDetectCommand",
+            "mainClass": "com.automationanywhere.botcommand.demo.LangDetectFileCommand",
             "icon": "pkg.svg",
-            "returnType": "DICTIONARY",
-            "returnSubtype": "UNDEFINED",
+            "returnType": "RECORD",
+            "returnSubtype": "NUMBER",
             "returnLabel": "Languages",
             "returnRequired": true,
+            "returnDescription": "Note: First Top 3 languages returned.",
             "attributes": [
                 {
                     "name": "textfile",
                     "label": "Text File",
                     "type": "FILE",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "encoding",
+                    "label": "Encoding",
+                    "type": "SELECT",
+                    "defaultValue": {
+                        "string": "UTF-8",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "UTF-8",
+                            "value": "UTF-8"
+                        },
+                        {
+                            "label": "US-ASCII",
+                            "value": "US-ASCII"
+                        },
+                        {
+                            "label": "ISO-8859-1",
+                            "value": "ISO-8859-1"
+                        }
+                    ]
+                },
+                {
+                    "name": "modelfile",
+                    "label": "Model File",
+                    "type": "FILE",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "detectlangstring",
+            "label": "Detect Languages String",
+            "description": "Detect the languages in a text string",
+            "nodeLabel": "Detect Languages String",
+            "mainClass": "com.automationanywhere.botcommand.demo.LangDetectStringCommand",
+            "icon": "pkg.svg",
+            "returnType": "RECORD",
+            "returnSubtype": "NUMBER",
+            "returnLabel": "Languages",
+            "returnRequired": true,
+            "returnDescription": "Note: First Top 3 languages returned.",
+            "attributes": [
+                {
+                    "name": "text",
+                    "label": "Text",
+                    "type": "TEXT",
                     "rules": [
                         {
                             "name": "NOT_EMPTY"
@@ -38,6 +102,36 @@
                             "name": "NOT_EMPTY"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "getlang",
+            "label": "Get Detected Language",
+            "description": "Get Top Detected Languages",
+            "nodeLabel": "Get Detected Language",
+            "mainClass": "com.automationanywhere.botcommand.demo.RetrieveLanguageCommand",
+            "icon": "pkg.svg",
+            "returnType": "DICTIONARY",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "Language",
+            "returnRequired": true,
+            "returnDescription": "Note: Use the 'language' key to access language and 'confidence' key to access the confidence.",
+            "attributes": [
+                {
+                    "name": "record",
+                    "label": "Sorted Record with detected Languages",
+                    "type": "VARIABLE",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "index",
+                    "label": "Index",
+                    "type": "NUMBER"
                 }
             ]
         }

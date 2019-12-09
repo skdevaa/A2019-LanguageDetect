@@ -85,9 +85,9 @@ configure(allprojects){
 		compileOnly name: 'command-annotations', version: '1+'
 		compileOnly name: 'bot-runtime', version: '1+'
 		compileOnly name: 'bot-api', version: '1+'
+		compile group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.8.3'
 		implementation name: 'i18n-api', version: '1+'
 		apt name: 'command-processor', version: '1+'
-		implementation name: 'opennlp-tools-1.8.3'
 		compileOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$loggerVersion"
 		testImplementation "org.testng:testng:$testNgVersion"
 		testImplementation name: 'bot-runtime', version: '1+'
